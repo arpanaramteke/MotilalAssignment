@@ -40,7 +40,7 @@ const Multiplication = (props) => {
   return (<button style={buttonStyle} onClick={props.onClick}>
      <div>  -
     <div>
-    <text>Multiplication</text>
+    <text>Multiply</text>
     </div>
     </div>
   </button>)
