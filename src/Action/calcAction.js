@@ -40,5 +40,4 @@ const getSubtraction = (value1, value2) => ({
       getSubtraction,
       getMultiplication,
       getDivision
-
   }

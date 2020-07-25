@@ -17,19 +17,43 @@ const containerStyle = {
 }
 
 const Addition = (props) => {
-  return (<button style={buttonStyle} onClick={props.onClick}>+</button>)
+  return (<button style={buttonStyle} onClick={props.onClick}>
+   <div>  +
+    <div>
+    <text>Addition</text>
+    </div>
+    </div>
+  </button>)
 }
 
 const Subtraction = (props) => {
-  return (<button style={buttonStyle} onClick={props.onClick}>-</button>)
+  return (<button style={buttonStyle} onClick={props.onClick}>
+    <div>  -
+    <div>
+    <text>Subtraction</text>
+    </div>
+    </div>
+  </button>)
 }
 
 const Multiplication = (props) => {
-  return (<button style={buttonStyle} onClick={props.onClick}>*</button>)
+  return (<button style={buttonStyle} onClick={props.onClick}>
+     <div>  -
+    <div>
+    <text>Multiplication</text>
+    </div>
+    </div>
+  </button>)
 }
 
 const Division = (props) => {
-  return (<button style={buttonStyle} onClick={props.onClick}>/</button>)
+  return (<button style={buttonStyle} onClick={props.onClick}>
+     <div>  /
+    <div>
+    <text>Division</text>
+    </div>
+    </div>
+  </button>)
 }
 
 class Calculator extends React.Component {
