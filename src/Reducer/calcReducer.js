@@ -5,8 +5,8 @@ const initialState = {
 }
 
 const CalcReducer = (state = initialState, action) => {
-
     switch (action.type) {
+    
       case GET_ADDITION:
         return {
             result : action.payload.value1 + action.payload.value2
@@ -25,7 +25,6 @@ const CalcReducer = (state = initialState, action) => {
         case GET_DIVISION:
             return {
               result :(action.payload.value2 !== 0 ?  action.payload.value1 / action.payload.value2 : "Cannot divide by zero")   
-
           }
         break;
     

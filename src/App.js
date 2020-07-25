@@ -7,7 +7,7 @@ const buttonStyle = {
   background: "linear-gradient(#800080, #440a44)",
   color: "white",
   width: "96px",
-  height:"69px",
+  height: "69px",
   margin: '5px'
 }
 
@@ -16,23 +16,23 @@ const containerStyle = {
   paddingBottom: '30px'
 }
 
-const Addition = (props: Props) => {
+const Addition = (props) => {
   return (<button style={buttonStyle} onClick={props.onClick}>+</button>)
 }
 
-const Subtraction = (props: Props) => {
+const Subtraction = (props) => {
   return (<button style={buttonStyle} onClick={props.onClick}>-</button>)
 }
 
-const Multiplication = (props: Props) => {
+const Multiplication = (props) => {
   return (<button style={buttonStyle} onClick={props.onClick}>*</button>)
 }
 
-const Division = (props: Props) => {
+const Division = (props) => {
   return (<button style={buttonStyle} onClick={props.onClick}>/</button>)
 }
 
-class Calculator extends React.Component<props, state>{
+class Calculator extends React.Component {
 
   constructor(props) {
     super(props);
@@ -49,7 +49,7 @@ class Calculator extends React.Component<props, state>{
       this.setState({ value1: event.target.value });
     }
   }
-  
+
 
   handleSecondInputChange = (event) => {
     if (isNaN(Number(event.target.value))) {
@@ -61,52 +61,62 @@ class Calculator extends React.Component<props, state>{
 
   handleAddition = () => {
     const { value1, value2 } = this.state;
-    this.props.getAddition(value1, value2)
+    if (value1 !== "" && value2 !== "") {
+      this.props.getAddition(value1, value2)
+    }
+
   }
 
   handleSubtraction = () => {
     const { value1, value2 } = this.state;
-    this.props.getSubtraction(value1, value2)
+    if (value1 !== "" && value2 !== "") {
+      this.props.getSubtraction(value1, value2)
+    }
+
   }
 
   handleMultiplication = () => {
     const { value1, value2 } = this.state;
-    this.props.getMultiplication(value1, value2)
+    if (value1 !== "" && value2 !== "") {
+      this.props.getMultiplication(value1, value2)
+    }
+
   }
 
   handleDivision = () => {
     const { value1, value2 } = this.state;
-    this.props.getDivision(value1, value2)
+    if (value1 !== "" && value2 !== "") {
+      this.props.getDivision(value1, value2)
+    }
   }
 
+
   render() {
-    const { value1, value2 } = this.state;
     return (
-      <div>
-        <div className="App">
-          <div className="App-header">Calculator</div>
-          <div>
-          <div style={{ paddingBottom: '10px', paddingTop: '10px' }}>
-            <input className="inputVal" type="number" onChange={(event) => this.handleFirstInputChange(event)}></input>
-          </div>
-          <div><input className="inputVal" type="number" onChange={(event) => this.handleSecondInputChange(event)}></input></div>
-          <div style={containerStyle}>
-            <div class="row">
-              <div class="col-12 justify-center">
-                <Addition onClick={this.handleAddition} />
-                <Subtraction onClick={this.handleSubtraction} />
+      <div className="App">
+        <div className="App-header">Calculator</div>
+        <div>
+          <div className="container">
+            <div style={{ paddingBottom: '10px', paddingTop: '10px' }}>
+              <input className="inputVal" type="number" onChange={(event) => this.handleFirstInputChange(event)}></input>
+            </div>
+            <div><input className="inputVal" type="number" onChange={(event) => this.handleSecondInputChange(event)}></input></div>
+            <div style={containerStyle}>
+              <div className="row">
+                <div className="col-12 justify-center">
+                  <Addition onClick={this.handleAddition} />
+                  <Subtraction onClick={this.handleSubtraction} />
+                </div>
+              </div>
+              <div className="row">
+                <div className="col-12 justify-center">
+                  <Multiplication onClick={this.handleMultiplication} />
+                  <Division onClick={this.handleDivision} />
+                </div>
               </div>
             </div>
-            <div class="row">
-              <div class="col-12 justify-center">
-                <Multiplication onClick={this.handleMultiplication} />
-                <Division onClick={this.handleDivision} />
-              </div>
-            </div>
+            <div>Result : {this.props.result}</div>
           </div>
-          {console.log(" this.props.result", this.props.result)}
-          <div>Result : {(value1 && value2) && this.props.result}</div>
-        </div>
         </div>
       </div>
     )
@@ -114,7 +124,6 @@ class Calculator extends React.Component<props, state>{
 }
 
 const mapStateToProps = (state) => {
-  console.log("diveide",state.CalcReducer.result)
   return {
     result: state.CalcReducer.result
   }
